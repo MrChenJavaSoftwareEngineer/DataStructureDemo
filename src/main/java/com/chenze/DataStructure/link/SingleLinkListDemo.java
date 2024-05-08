@@ -1,10 +1,11 @@
-package com.chenze.DataStructure;
+package com.chenze.DataStructure.link;
 
 import java.util.Scanner;
 
 /**
  * 本次的节点是书，节点包含了信息有：书的编号，名字，受欢迎的程度
  * 1.第一阶段实现单链表的基本操作
+ * 2.第二阶段完善单链表的功能
  */
 public class SingleLinkListDemo {
     static int bookNo;
