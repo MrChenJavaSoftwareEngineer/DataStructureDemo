@@ -3,3 +3,4 @@
 本包是数组排序
 Sort
 1.BubbleSort
+2.InsertSort
