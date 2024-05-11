@@ -29,6 +29,14 @@ public class BubbleSort {
         System.out.println("排序后"+Arrays.toString(arr));
     }
 
+    /**
+     * 冒泡排序
+     * 大体思路：
+     * 通过两层for循环进行多次循环，每次循环表示把最大值交换到最后一位，第二大的值放到倒数第二位，依次这样进行交换
+     * 直到排序完毕，其中的flag表示每次循环是否进行了交换了，若有一次循环没有进行交换，表示已经排序完毕了，可以有
+     * 效的减少循环次数。
+     * @param arr 传入的数组
+     */
     private static void bubbleSort(int[] arr) {
         int temp;//设置一个辅助变量
         boolean flag=false;//表示交换过，作用：提升效率

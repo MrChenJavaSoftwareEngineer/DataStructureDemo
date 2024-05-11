@@ -26,6 +26,15 @@ public class InsertSort {
         System.out.println("排序后的数据  "+Arrays.toString(arr));
     }
 
+    /**
+     * 插入排序
+     * 大体的思路：
+     *进行arr.length次循环，总共操作两个数，最开始是从第一个和第二个进行比较交换，随着i的增大，那么小的那个数会放在这两个的前面，然后
+     * 这个小的数会和他的前面的数进行比较，若还是该数小，则会放在前面，依次执行，直到insertIndex小于0了，表示该值为最小值，若是while
+     * 的判断的第二个条件不满足了，则表示该数比当前的insertIndex之前的数要大，则指向该位置，那么就会进行判断，然后进行
+     * 最后一次的交换，把该位置的数用insertValue进行覆盖。
+     * @param arr 传入的数组
+     */
     private static void insertSort(int[] arr) {
         for (int i = 1;i < arr.length ; i++) {
             //定义待定插入的辅助变量
