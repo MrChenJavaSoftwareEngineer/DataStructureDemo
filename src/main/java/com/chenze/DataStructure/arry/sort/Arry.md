@@ -4,3 +4,5 @@
 Sort
 1.BubbleSort
 2.InsertSort
+3.QuickSort
+4.SelectSort
