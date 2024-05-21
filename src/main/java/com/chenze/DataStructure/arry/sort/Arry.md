@@ -6,3 +6,6 @@ Sort
 2.InsertSort
 3.QuickSort
 4.SelectSort
+5.ShellSort
+6.MergeSort
+7.RadixSort
