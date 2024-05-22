@@ -38,7 +38,7 @@ public class QuickSort {
      * @param left 左下标
      * @param right 右下标
      */
-    private static void quickSort(int[] arr, int left, int right) {
+    public static void quickSort(int[] arr, int left, int right) {
         /*
         第一部分
          */
