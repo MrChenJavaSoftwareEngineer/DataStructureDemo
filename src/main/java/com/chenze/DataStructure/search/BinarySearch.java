@@ -42,7 +42,7 @@ public class BinarySearch {
      * @param list 储存传入的数组查找的值的下标
      */
     private static void binarySearch(int[] arr, int left, int right, int value,List<Integer> list) {
-            if (left > right) {
+            if (left>right||arr[arr.length-1]<value||arr[0]>value) {
                 return;
             }
             int midIndex = (left + right) / 2;
