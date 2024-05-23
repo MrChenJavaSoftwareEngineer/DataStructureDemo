@@ -17,6 +17,7 @@ public class SeqSearch {
         String curDate = simpleDateFormat.format(currentDate);
         System.out.println("查找前的时间是="+curDate);
          Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入一个要查找的值：");
          int value = scanner.nextInt();
         List<Integer> list = seqSearch(arr, value);
         Date afterDate = new Date();

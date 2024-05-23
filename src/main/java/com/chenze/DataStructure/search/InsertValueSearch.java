@@ -20,6 +20,7 @@ public class InsertValueSearch {
         String curDate = simpleDateFormat.format(currentDate);
         System.out.println("查找前的时间是="+curDate);
         Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入一个要查找的值：");
         int value = scanner.nextInt();
         List<Integer> list = new ArrayList<>();
         insertValueSearch(arr,0,arr.length-1, value,list);
