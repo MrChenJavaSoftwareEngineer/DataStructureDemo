@@ -2,3 +2,4 @@
 
 目标是练习并掌握树结构的基本：
 1.BinaryTree（二叉树遍历）
+2，BinaryTreeSearch(二叉树查找)

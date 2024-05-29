@@ -1,5 +1,7 @@
 package com.chenze.DataStructure.tree;
 
+import java.util.Objects;
+import java.util.Scanner;
 import java.util.prefs.BackingStoreException;
 
 public class BinaryTreeDemo {
@@ -14,7 +16,14 @@ public class BinaryTreeDemo {
         node3.setRightNode(node4);
         node3.setLeftNode(node5);
          BinaryTree binaryTree = new BinaryTree(root);
+         //二叉树遍历
          binaryTree.preOrder();
+         //二叉树遍历查找
+         Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入您要找到人的编号：");
+         int index= scanner.nextInt();
+        TreeNode treeNode = binaryTree.preOrderSearch(index);
+         System.out.println(treeNode+" ^_^找到了~");
     }
 
 }
@@ -28,7 +37,7 @@ class  BinaryTree{
     public BinaryTree(TreeNode treeNode) {
         this.treeNode = treeNode;
     }
-
+    //==================二叉树遍历=======================
     //前序遍历
     public void preOrder(){
         if (this.treeNode!=null){
@@ -47,6 +56,33 @@ class  BinaryTree{
             this.treeNode.postOrder();
         }
     }
+    //==================二叉树查找=================
+    //前序遍历查找
+    public TreeNode preOrderSearch(Integer no){
+        if (this.treeNode!=null){
+            return this.treeNode.preOrderSearch(no);
+        }else {
+            return null;
+        }
+    }
+
+    //中序遍历查找
+    public TreeNode infixOrderSearch(Integer no){
+        if (this.treeNode!=null){
+            return this.treeNode.infixOrderSearch(no);
+        }else {
+            return null;
+        }
+    }
+
+    //后序遍历查找
+    public TreeNode postOrderSearch(Integer no){
+        if (this.treeNode!=null){
+            return this.treeNode.postOrderSearch(no);
+        }else {
+            return null;
+        }
+    }
 }
 
 /**
@@ -62,7 +98,7 @@ class TreeNode{
         this.userNo = userNo;
         this.userName = userName;
     }
-
+//=====================二叉树遍历=====================================
     public void preOrder(){
         System.out.println(this);
         if (this.leftNode!=null){
@@ -93,7 +129,60 @@ class TreeNode{
         }
         System.out.println(this);
     }
+//============================二叉树查找==================================
+    public TreeNode preOrderSearch(Integer no){
+        if (Objects.equals(this.userNo, no)){
+            return this;
+        }
+        TreeNode treeNode=null;
+        if (this.leftNode!=null){
+            treeNode=this.leftNode.preOrderSearch(no);
+        }
+        if (treeNode!=null){
+            return treeNode;
+        }
+        if (this.rightNode!=null){
+            treeNode=this.rightNode.preOrderSearch(no);
+        }
+        return treeNode;
+    }
 
+    public TreeNode infixOrderSearch(Integer no){
+        TreeNode treeNode=null;
+        if (this.leftNode!=null){
+            treeNode=this.leftNode.infixOrderSearch(no);
+        }
+        if (treeNode!=null){
+            return treeNode;
+        }
+        if (Objects.equals(this.userNo, no)){
+            return this;
+        }
+        if (this.rightNode!=null){
+            treeNode=this.rightNode.infixOrderSearch(no);
+        }
+        return treeNode;
+    }
+
+    public TreeNode postOrderSearch(Integer no){
+        TreeNode treeNode=null;
+        if (this.leftNode!=null){
+            treeNode=this.leftNode.postOrderSearch(no);
+        }
+        if (treeNode!=null){
+            return treeNode;
+        }
+        if (this.rightNode!=null){
+            treeNode=this.rightNode.postOrderSearch(no);
+        }
+        if (treeNode!=null){
+            return treeNode;
+        }
+        if (Objects.equals(this.userNo, no)){
+            return this;
+        }
+        return treeNode;
+    }
     @Override
     public String toString() {
         return "TreeNode{" +
