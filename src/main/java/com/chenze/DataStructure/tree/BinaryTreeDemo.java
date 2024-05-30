@@ -1,5 +1,6 @@
 package com.chenze.DataStructure.tree;
 
+import java.lang.reflect.Array;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.prefs.BackingStoreException;
@@ -24,6 +25,10 @@ public class BinaryTreeDemo {
          int index= scanner.nextInt();
         TreeNode treeNode = binaryTree.preOrderSearch(index);
          System.out.println(treeNode+" ^_^找到了~");
+         //二叉树节点的删除
+        System.out.println("请输入要删除的节点的编号：");
+         int deleteIndex = scanner.nextInt();
+         binaryTree.delNode(deleteIndex);
     }
 
 }
@@ -81,6 +86,19 @@ class  BinaryTree{
             return this.treeNode.postOrderSearch(no);
         }else {
             return null;
+        }
+    }
+    //=================二叉树的节点的删除==================
+    public void delNode(Integer userNo){
+        if (this.treeNode!=null){
+            if (Objects.equals(this.treeNode.getUserNo(), userNo)){
+                this.treeNode=null;
+            }else {
+                this.treeNode.delNode(userNo);
+            }
+            this.preOrder();
+        }else {
+            System.out.println("空树！无法删除~");
         }
     }
 }
@@ -182,6 +200,23 @@ class TreeNode{
             return this;
         }
         return treeNode;
+    }
+    //============================二叉树节点的删除====================================
+    public void delNode(Integer userNo){
+        if (this.leftNode!=null&& Objects.equals(this.leftNode.userNo, userNo)){
+            this.leftNode=null;
+            return;
+        }
+        if (this.rightNode!=null&& Objects.equals(this.rightNode.userNo, userNo)){
+            this.rightNode=null;
+            return;
+        }
+        if (this.leftNode!=null){
+            this.leftNode.delNode(userNo);
+        }
+        if(this.rightNode!=null){
+            this.rightNode.delNode(userNo);
+        }
     }
     @Override
     public String toString() {
