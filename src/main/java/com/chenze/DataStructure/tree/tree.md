@@ -4,3 +4,4 @@
 1.BinaryTree（二叉树遍历）
 2，BinaryTreeSearch(二叉树查找)
 3.BinaryTreeDelete(二叉树节点的删除)
+4.ArrBinaryTreeDemo(数组以树的形式遍历)
