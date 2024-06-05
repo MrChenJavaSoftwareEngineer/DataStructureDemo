@@ -29,6 +29,10 @@ public class ThreadedBinaryTreeDemo {
         HeroNode rightNode = node5.getRightNode();
         System.out.println("10号结点的前驱结点是 ="  + leftNode); //3
         System.out.println("10号结点的后继结点是="  + rightNode); //1
+        //当线索化二叉树后，能在使用原来的遍历方法
+        //threadedBinaryTree.infixOrder();
+        System.out.println("使用线索化的方式遍历 线索化二叉树");
+        threadedBinaryTree.threadedList(); // 8, 3, 10, 1, 14, 6
     }
 }
 
@@ -40,6 +44,20 @@ class ThreadedBinaryTree{
     }
     public void threadedNodes(){
         this.threadedBinaryTree(root);
+    }
+    public void threadedList(){
+        HeroNode node=root;
+        while(node!=null){
+            while (node.getLeftType()==0){
+                node=node.getLeftNode();
+            }
+            System.out.println(node);
+            while(node.getRightType()==1){
+                node=node.getRightNode();
+                System.out.println(node);
+            }
+            node=node.getRightNode();
+        }
     }
     public void threadedBinaryTree(HeroNode node){
         if (node==null){
@@ -68,8 +86,8 @@ class HeroNode{
         private String userName;
         private HeroNode leftNode;
         private HeroNode rightNode;
-        private Integer leftType;
-        private Integer rightType;
+        private int leftType;
+        private int rightType;
 
     public void setUserNo(Integer userNo) {
         this.userNo = userNo;
@@ -87,11 +105,11 @@ class HeroNode{
         this.rightNode = rightNode;
     }
 
-    public void setLeftType(Integer leftType) {
+    public void setLeftType(int leftType) {
         this.leftType = leftType;
     }
 
-    public void setRightType(Integer rightType) {
+    public void setRightType(int rightType) {
         this.rightType = rightType;
     }
 
@@ -111,11 +129,11 @@ class HeroNode{
         return rightNode;
     }
 
-    public Integer getLeftType() {
+    public int getLeftType() {
         return leftType;
     }
 
-    public Integer getRightType() {
+    public int getRightType() {
         return rightType;
     }
         public HeroNode(Integer userNo, String userName) {
