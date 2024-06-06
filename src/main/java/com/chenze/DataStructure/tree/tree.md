@@ -6,3 +6,4 @@
 3.BinaryTreeDelete(二叉树节点的删除)
 4.ArrBinaryTreeDemo(数组以树的形式遍历)
 5.ThreadedBinaryTreeDemo(线索化二叉树)
+6.HeapSort(堆排序)
