@@ -8,3 +8,5 @@
 5.ThreadedBinaryTreeDemo(线索化二叉树)
 6.HeapSort(堆排序)
 7.HuffManTree(赫夫曼树)
+8.HuffManTreeCode(赫夫曼编码，用于压缩解压文件（该文件必须为赫夫曼压缩和解压）)
+9.BinaryTreeSort(二叉树排序，排序和储存都是最好的)
