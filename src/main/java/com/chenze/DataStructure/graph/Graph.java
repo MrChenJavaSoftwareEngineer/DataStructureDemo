@@ -3,17 +3,10 @@ package com.chenze.DataStructure.graph;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Boolean和boolean的区别，Boolean默认值是null，注意空指针异常，boolean默认值是false
- * 所有首字母大写的数据类型，可以理解为一个类（该类型的一个包，就是该类型的总称），所以默认值为null
- * 而首字母小写的数据类型则是正常的数据类型，所以默认值为该类型的数值的最小值。
- */
-
 public class Graph {
     private ArrayList<String> vertexList;//储存结点
     private int[][] edges;//结点之间的边
     private int numOfEdges;//边的数量
-    private boolean[] isVisited;//是否进行访问
 
     public static void main(String[] args) {
         int vertexNum=5;
@@ -33,56 +26,12 @@ public class Graph {
 
         //显示一把邻结矩阵
         graph.showGraph();
-
-        graph.dfs();
     }
 
     //展示图的矩阵
     public void showGraph(){
         for (int[] link:edges) {
             System.out.println(Arrays.toString(link));
-        }
-    }
-
-    //获得当前结点的相邻的第一个结点
-    public int getFirstNeighbor(int index){
-        for (int i=0;i<vertexList.size();i++){
-            if(edges[index][i] > 0) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    //获得当前结点的相邻的第二个结点
-    public int getNextNeighbor(int v1,int v2){
-        for (int i=v2+1;i<vertexList.size();i++){
-            if (edges[v1][i]>0){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    //进行dfs算法（深度优先算法）,isVisited是非常重要的，因为是否要进行的是回溯还是深入，都要看这个isVisited的值。
-    private void dfs(boolean[] isVisited,int index){
-        System.out.print(getValueByIndex(index)+"->");
-        isVisited[index]=true;
-        int w = getFirstNeighbor(index);
-        while(w !=-1){
-            if (!isVisited[w]) {
-                dfs(isVisited, w);
-            }
-            w = getNextNeighbor(index, w);
-        }
-    }
-
-    //避免遗漏，写一个重载
-    public void dfs(){
-        for (int i = 0; i < getNumOfVertex(); i++) {
-            if (!isVisited[i]) {
-                dfs(isVisited, i);
-            }
         }
     }
 
@@ -123,7 +72,6 @@ public class Graph {
         edges=new int[num][num];
         vertexList=new ArrayList<>(num);
         numOfEdges=0;
-        isVisited=new boolean[num];
     }
 
     //
