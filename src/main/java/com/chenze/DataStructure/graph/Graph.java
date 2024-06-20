@@ -2,11 +2,15 @@ package com.chenze.DataStructure.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Graph {
     private ArrayList<String> vertexList;//储存结点
     private int[][] edges;//结点之间的边
     private int numOfEdges;//边的数量
+
+    //定义给数组boolean[], 记录某个结点是否被访问
+    private boolean[] isVisited;
 
     public static void main(String[] args) {
         int vertexNum=5;
@@ -26,6 +30,99 @@ public class Graph {
 
         //显示一把邻结矩阵
         graph.showGraph();
+
+        //测试一把，我们的dfs遍历是否ok
+//        System.out.println("深度遍历");
+//        graph.dfs(); // A->B->C->D->E [1->2->4->8->5->3->6->7]
+        System.out.println("广度优先遍历");
+        graph.bfs();//A->B->C->D-E [1->2->3->4->5->6->7->8]
+    }
+
+    //对dfs 进行一个重载, 遍历我们所有的结点，并进行 dfs
+    public void dfs() {
+        isVisited = new boolean[vertexList.size()];
+        //遍历所有的结点，进行dfs[回溯]
+        for(int i = 0; i < getNumOfVertex(); i++) {
+            if(!isVisited[i]) {
+                dfs(isVisited, i);
+            }
+        }
+    }
+
+    //得到第一个邻接结点的下标 w
+    /**
+     *
+     * @param index
+     * @return 如果存在就返回对应的下标，否则返回-1
+     */
+    public int getFirstNeighbor(int index) {
+        for(int j = 0; j < vertexList.size(); j++) {
+            if(edges[index][j] > 0) {
+                return j;
+            }
+        }
+        return -1;
+    }
+    //根据前一个邻接结点的下标来获取下一个邻接结点
+    public int getNextNeighbor(int v1, int v2) {
+        for(int j = v2 + 1; j < vertexList.size(); j++) {
+            if(edges[v1][j] > 0) {
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    //广度优先
+    private void bfs(boolean[] isVisited,int i){
+        int u;//头结点
+        int w;//邻结点
+        System.out.println(getValueByIndex(i)+"=>");
+        isVisited[i]=true;
+        LinkedList<Integer> queue = new LinkedList<>();
+        queue.addLast(i);
+        while(!queue.isEmpty()){
+            u = queue.removeFirst();
+            w=getFirstNeighbor(u);
+            while(w!=-1){
+                if (!isVisited[w]){
+                    System.out.println(getValueByIndex(w)+"=>");
+                    isVisited[w]=true;
+                    queue.addLast(w);
+                }
+                 w = getNextNeighbor(u, w);
+            }
+        }
+    }
+
+    //广度优先
+    public void bfs(){
+        isVisited = new boolean[vertexList.size()];
+        for (int i = 0; i < getNumOfVertex(); i++) {
+            if (!isVisited[i]) {
+                bfs(isVisited, i);
+            }
+        }
+    }
+
+
+    //深度优先遍历算法
+    //i 第一次就是 0
+    private void dfs(boolean[] isVisited, int i) {
+        //首先我们访问该结点,输出
+        System.out.print(getValueByIndex(i) + "->");
+        //将结点设置为已经访问
+        isVisited[i] = true;
+        //查找结点i的第一个邻接结点w
+        int w = getFirstNeighbor(i);
+        while(w != -1) {//说明有
+            if(!isVisited[w]) {
+                dfs(isVisited, w);
+            }
+            //如果w结点已经被访问过
+            w = getNextNeighbor(i, w);
+        }
+
     }
 
     //展示图的矩阵
