@@ -1,0 +1,5 @@
+本次的练习对象是kmp算法
+具体以字符串匹配问题这个Java案例进行练习kmp算法的运用
+同时以暴力算法与kmp算法进行对比，突显出kmp算法的优势
+1.ViolenceMatch（暴力算法）
+2.KMPAlgorithm（kmp算法）
